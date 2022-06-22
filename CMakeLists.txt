@@ -27,7 +27,7 @@ find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
 find_package(std_msgs REQUIRED)
 find_package(geometry_msgs REQUIRED)
-
+find_package(tutorial_interfaces REQUIRED)                         # CHANGE
 
 include_directories(include)
 
@@ -35,9 +35,9 @@ include_directories(include)
 find_package(rosidl_default_generators REQUIRED)
 
 rosidl_generate_interfaces(${PROJECT_NAME}
-  "msg/Num.msg"
+	#  "msg/Num.msg"
   "msg/KeyboardInput.msg"
-  "srv/AddThreeInts.srv"
+  #"srv/AddThreeInts.srv"
 )
 
 
@@ -50,10 +50,12 @@ find_package(Threads REQUIRED)
 #pkg_check_modules()
 
 add_executable(talker src/publisher_member_function.cpp src/parse_cl.cpp src/parse_cl.h)
-ament_target_dependencies(talker rclcpp std_msgs)
+#ament_target_dependencies(talker rclcpp std_msgs)
+ament_target_dependencies(talker rclcpp std_msgs tutorial_interfaces)         # CHANGE
 
 add_executable(listener src/subscriber_member_function.cpp)
-ament_target_dependencies(listener rclcpp std_msgs)
+#ament_target_dependencies(listener rclcpp std_msgs)
+ament_target_dependencies(listener rclcpp std_msgs tutorial_interfaces)     # CHANGE
 
 target_include_directories(talker PUBLIC
       $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
