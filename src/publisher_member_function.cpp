@@ -71,7 +71,7 @@ public:
     //publisher_ = this->create_publisher<cpp_pubsub::msg::Num>("topic", 10);
     publisher_ = this->create_publisher<tutorial_interfaces::msg::Num>("topic", 10);
 
-    //velocity_publisher_ = this->create_publisher<geometry_msgs::msg::Twist>("cmd_vel", 1);
+    velocity_publisher_ = this->create_publisher<geometry_msgs::msg::Twist>("cmd_vel", 1);
     //publisher_ = this->create_publisher<geometry_msgs::msg::Twist>("/velocity_smoother/input", 1);
     
     timer_ = this->create_wall_timer(
